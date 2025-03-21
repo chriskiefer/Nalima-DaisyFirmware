@@ -216,6 +216,7 @@ struct controlData {
     float pitchtrans;
     float pitchfun;
     float lpf;
+    float limAtt;
 } controls;
 
 
@@ -228,7 +229,8 @@ void AudioCallback(AudioHandle::InputBuffer  in,
 
 
     controls.pitchtrans = patch.GetAdcValue(CV_1) * -12.f;
-    controls.pitchfun = patch.GetAdcValue(CV_2);
+    controls.pitchfun = 0.4f; //patch.GetAdcValue(CV_2);
+    // controls.limAtt = patch.GetAdcValue(CV_2) * 0.3f;
     controls.thresh1 = patch.GetAdcValue(CV_3) * -80.f;
     controls.rpcLimThresh = patch.GetAdcValue(CV_4) * -80.f;
     controls.verbfeedback = patch.GetAdcValue(CV_5) * 1.0;
